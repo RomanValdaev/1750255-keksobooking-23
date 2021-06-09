@@ -43,8 +43,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 // 2. Типовая функция. Перебор массива с текстовыми данными c выводом случайного значения по индексу элемента.
-function
-getArrayRandomElement (array) {
+function getArrayRandomElement (array) {
   if (array && array.length) {
     return array[Math.floor(Math.random() * array.length)];
   }
@@ -62,19 +61,18 @@ function getFloatInt(min, max) {
     //Выводим сообщение об обшибке - ('В диапазоне максимальное значение должно быть больше минимального!');
   }
 }
-// 4. Вычисляем необходымые данные:
-const LONGITUDE_MIDDLE_VALUE = getFloatInt(LONGITUDE_VALUE_MIN, LONGITUDE_VALUE_MAX, COORDS_ACCURACY);
-const LATITUDE_MIDDLE_VALUE = getFloatInt(LATITUDE_VALUE_MIN, LATITUDE_VALUE_MAX, COORDS_ACCURACY);
 
-// 5. Формируем структуру обьекта согласно ТЗ:
+// 4. Формируем структуру обьекта согласно ТЗ:
 function createOffer() {
+  const longitudeMiddleValue = getFloatInt(LONGITUDE_VALUE_MIN, LONGITUDE_VALUE_MAX, COORDS_ACCURACY);
+  const latitudeMiddleValue = getFloatInt(LATITUDE_VALUE_MIN, LATITUDE_VALUE_MAX, COORDS_ACCURACY);
   return {
     author: {
       avatar: `img/avatars/user0${getRandomIntInclusive(USER_NUMBER_MIN, USER_NUMBER_MAX)}.png`},
 
     offer: {
       title: 'Сдам уютную квартиру, недорого',
-      adress: `Координаты места расположения: ${LONGITUDE_MIDDLE_VALUE}, ${LATITUDE_MIDDLE_VALUE}`,
+      address: `Координаты места расположения: ${longitudeMiddleValue}, ${latitudeMiddleValue}`,
       price: getRandomIntInclusive(PRICE_VALUE_MIN, PRICE_VALUE_MAX),
       type: getArrayRandomElement(TYPE_OF_APARTMENT),
       rooms: getRandomIntInclusive(ROOMS_VALUE_MIN, ROOMS_VALUE_MAX),
@@ -86,12 +84,12 @@ function createOffer() {
       photos: REAL_ESTATE_PHOTO.slice(0, getRandomIntInclusive(1, REAL_ESTATE_PHOTO.length))  },
 
     location: {
-      lat: LONGITUDE_MIDDLE_VALUE,
-      lng: LATITUDE_MIDDLE_VALUE,
+      lat: longitudeMiddleValue,
+      lng: latitudeMiddleValue,
     },
   };
 }
-// 6. Формируем необходимый массив из 10 JS обьектов:
+// 5. Формируем необходимый массив из 10 JS обьектов:
 const similarOffers = new Array(NUMBER_OF_ARRAYS).fill(null).map(() => createOffer());
 similarOffers;
 // console.log(similarOffers);
