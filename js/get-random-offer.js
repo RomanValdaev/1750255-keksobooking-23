@@ -18,8 +18,7 @@ import {
   LONGITUDE_VALUE_MAX,
   LATITUDE_VALUE_MIN,
   LATITUDE_VALUE_MAX,
-  COORDS_ACCURACY,
-  NUMBER_OF_ARRAYS} from './variables.js';
+  COORDS_ACCURACY } from './variables.js';
 
 import {getRandomIntInclusive} from './get-random-positive-integer.js';
 import {getArrayRandomElement} from './get-random-stroke-massive.js';
@@ -53,7 +52,4 @@ function createOffer() {
   };
 }
 
-const similarOffers = new Array(NUMBER_OF_ARRAYS).fill(null).map(() => createOffer());
-similarOffers;
-
-export {similarOffers};
+export {createOffer};
