@@ -61,20 +61,20 @@ const generateAdMarkup = function() {
     }
     // Работаем с Photo
     const fotoElement = ticket.querySelector('.popup__photos');
-    fotoElement.querySelector('img').remove(); // удаляем ненужный Img.
+    // fotoElement.querySelector('img').remove(); // удаляем ненужный Img.
     const fotoElementData = similarOffers[i].offer.photos;
 
     if (fotoElementData.length === 0) {
       fotoElement.classList.add('hidden');
     } else {
-      for (let fotoElemenItem = 0; fotoElemenItem < fotoElementData; fotoElemenItem++) {
+      for (let fotoElementItem = 0; fotoElementItem < fotoElementData; fotoElementItem++) {
         const fotoElementImg = document.createElement('img');
         // может тут надо сделать ссылку на создание элемента в fotoElement.createElement('img')?
         fotoElementImg.classList.add('popup__photo');
         fotoElementImg.src = `${fotoElementData}`;
         fotoElementImg.width = 45;
         fotoElementImg.height = 40;
-        fotoElementImg.alt = 'Фотография жилья';
+        fotoElementImg.alt = 'Фотография апартаментов';
         fotoElement.appendChild(fotoElementImg);
       }
     }
