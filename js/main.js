@@ -1,10 +1,10 @@
 // Cоздаем точку входа
-const NUMBER_OF_ARRAYS = 10; // создал константу в блоке, где она используется
+import {createOffer} from './create-offer.js'; // импортировал функцию из модуля
+import {generateAddMarkup} from './generate-add-markup.js'; // импортировал функцию из модуля
 
-import {createOffer} from './get-random-offer.js'; // импортировал функцию из модуля
+const NUMBER_OF_ARRAYS = 1; // создал константу в блоке, где она используется
 
-// выполняем операции в данном модуле
+// создаем случайный массив данных
 const similarOffers = new Array(NUMBER_OF_ARRAYS).fill(null).map(() => createOffer());
-similarOffers;
-// console.log(similarOffers);
-// линтер (проблемы в консоли)- проблем 0, npm test - ошибок 0;
+
+generateAddMarkup(similarOffers[0]);

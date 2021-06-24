@@ -1,5 +1,5 @@
 // 1. Типовая функция - вычисляем случайное целое число из заданного диапазона.
-function getRandomIntInclusive(min, max) {
+function getRandomInt(min, max) {
   if (min >= 0 && max >= 0 && max > min) {
     min = Math.ceil(min); // округление вверх. Округляет аргумент до ближайшего большего целого.
     max = Math.floor(max); // округление вниз. Округляет аргумент до ближайшего меньшего целого.
@@ -11,4 +11,4 @@ function getRandomIntInclusive(min, max) {
     //Выводим сообщение об обшибке - ('В диапазоне максимальное значение должно быть больше минимального!');
   }
 }
-export {getRandomIntInclusive};
+export {getRandomInt};
