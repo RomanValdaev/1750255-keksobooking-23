@@ -19,7 +19,7 @@ const formValidation = function () {
   });
 
   // Валидация поля "Цена за ночь"
-  const MIN_NIGHT_PRICE = 1;
+  const MIN_NIGHT_PRICE = 0;
   const MAX_NIGHT_PRICE = 1000000;
 
   const priceValue = document.querySelector('#price');
@@ -42,15 +42,15 @@ const formValidation = function () {
   const roomsSelect = form.querySelector('#room_number');
   const guestsSelect = form.querySelector('#capacity');
   const ROOMS = {
-    one: 1,
-    two: 2,
-    three: 3,
-    hundred: 100,
+    one: '1',
+    two: '2',
+    three: '2',
+    hundred: '100',
   };
   const GUEST = {
-    one: 1,
-    two: 2,
-    three: 3,
+    one: '1',
+    two: '2',
+    three: '3',
     norooms: 'не для гостей',
   };
 
@@ -71,10 +71,12 @@ const formValidation = function () {
       message = 'Этот 100-комнатный дворец не для гостей';
     }
     roomsSelect.setCustomValidity(message);
+    roomsSelect.reportValidity();
     guestsSelect.setCustomValidity(message);
+    guestsSelect.reportValidity();
   };
 
-  form.addEventListener('change', roomGuestValidate);
+  form.addEventListener('submit', roomGuestValidate);
 };
 
 export {formValidation};
