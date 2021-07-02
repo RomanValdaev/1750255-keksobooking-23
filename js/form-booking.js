@@ -12,12 +12,6 @@ const PALACE_MIN_COST = 10000;
 timeIn.addEventListener('change', () => {timeOut.value = timeIn.value;});
 timeOut.addEventListener('change', () => {timeIn.value = timeOut.value;});
 
-// const timeChangeFunction = (timeIntСhange, timeOutСhange) => {
-//   timeIntСhange.value = timeOutСhange.value;
-// };
-// timeIn.addEventListener('change', () => timeChangeFunction(timeOut, timeIn));
-// timeOut.addEventListener('change', () => timeChangeFunction(timeIn, timeOut));
-
 // Синхронизируем действия в полях 'Тип Жилья' и 'Цена за ночь'
 const formHouseChange = () => {
   const addForm = document.querySelector('.ad-form');
