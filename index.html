@@ -3,11 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin="" />
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="leaflet/leaflet.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кексобукинг</title>
 </head>
@@ -24,10 +22,10 @@
     <section class="map">
 
       <!-- Блок для вставки карты -->
-      <div class="map__canvas" id="map-canvas">
-        <div class="map-leaflet" id="map-leaflet"></div>
-      </div>
+      <div class="map__canvas" id="map-canvas"></div>
 
+      <!-- Фильтрация объявлений -->
+      <!-- Фильтрация объявлений -->
       <!-- Фильтрация объявлений -->
       <div class="map__filters-container">
         <form action="#" class="map__filters" autocomplete="off">
@@ -81,6 +79,8 @@
     </section>
 
     <!-- Форма объявления -->
+     <!-- Форма объявления -->
+      <!-- Форма объявления -->
     <section class="notice">
       <h2 class="notice__title">Ваше объявление</h2>
       <form class="ad-form" method="post" enctype="multipart/form-data" autocomplete="off"
@@ -219,16 +219,6 @@
     </ul>
   </footer>
 
-  <!--Временнный код  -->
-  <template id="balloon">
-    <section class="balloon">
-      <h3 class="balloon__title">Остров сокровищ</h3>
-      <p class="balloon__lat-lng">Координаты: 12.34567, 98.76543</p>
-    </section>
-  </template>
-    <!--Временнный код  -->
-
-
   <!-- Карточка объявления -->
   <template id="card">
     <article class="popup">
@@ -271,11 +261,8 @@
   </template>
 
   <!-- Подключаем файл JS -->
+  <script src="leaflet/leaflet.js" ></script>
   <script src="js/main.js" type="module"></script>
-  <!-- Подключаем файл с картой -->
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
 </body>
 
 </html>
