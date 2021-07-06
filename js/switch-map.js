@@ -15,7 +15,7 @@ activeMap();
 
 // предполагемый функционал - кнопка, которая включает и выключает режим карты
 document.addEventListener('click', activeMap);
-document.addEventListener('click', deactiveMap);
+// document.addEventListener('click', deactiveMap);
 
 export{deactiveMap};
 export{activeMap};

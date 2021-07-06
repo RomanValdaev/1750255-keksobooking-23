@@ -1,14 +1,11 @@
-// Cоздаем точку входа
+// перелиновка
 import {createOffer} from './create-offer.js';
-import {generateAddMarkup} from './generate-add-markup.js';
 import {formValidation} from './form-validation.js';
-import {deactiveMap} from './switch-map.js';
-import {activeMap} from './switch-map.js';
+import {generateAddMarkup} from './generate-add-markup.js';
+import './form-booking.js';
+import './map.js';
 
-
-const NUMBER_OF_ARRAYS = 1; // создал константу в блоке, где она используется
+const NUMBER_OF_ARRAYS = 10;
 const similarOffers = new Array(NUMBER_OF_ARRAYS).fill(null).map(() => createOffer());
 generateAddMarkup(similarOffers[0]);
 formValidation();
-deactiveMap();
-activeMap();

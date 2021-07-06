@@ -20,10 +20,9 @@ import {
   COORDS_ACCURACY } from './variables.js';
 
 import {getRandomInt} from './get-random-int.js';
-import {getArrayRandomElement} from './get-array-random-element.js';
 import {getRandomFloatInt} from './get-random-float-int.js';
+import {getArrayRandomElement} from './get-array-random-element.js';
 
-// 4. Формируем структуру обьекта согласно ТЗ:
 function createOffer() {
   const longitudeMiddleValue = getRandomFloatInt(LONGITUDE_VALUE_MIN, LONGITUDE_VALUE_MAX, COORDS_ACCURACY);
   const latitudeMiddleValue = getRandomFloatInt(LATITUDE_VALUE_MIN, LATITUDE_VALUE_MAX, COORDS_ACCURACY);
