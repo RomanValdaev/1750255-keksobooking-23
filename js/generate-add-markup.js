@@ -73,8 +73,9 @@ const generateAddMarkup = function({offer, author}) {
     avatarItem.src = avatarSrc;
   }
 
-  similarFragment.appendChild(ticket);
-  mapCanvasElement.appendChild(similarFragment);
+  // similarFragment.appendChild(ticket);
+  // mapCanvasElement.appendChild(similarFragment);
+  return ticket;
 };
 
-export{generateAddMarkup};
+export {generateAddMarkup};
