@@ -86,7 +86,7 @@ const addOtherPinMarker = (offers) => {
     );
 
     otherPinMarker.addTo(markerGroup).bindPopup(
-      generateAddMarkup(point),
+      generateAddMarkup(point), // !!! функция генерирования данных для точек.
       {
         keepInView: true,
       },

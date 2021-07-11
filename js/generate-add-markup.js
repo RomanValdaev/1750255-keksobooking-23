@@ -1,3 +1,5 @@
+import {getData} from './fetch.js';
+
 const houseTypeData = {
   palace: 'Дворец',
   flat: 'Квартира',
@@ -42,7 +44,7 @@ const generateAddMarkup = function({offer, author}) {
   } else {
     for (let featureData = 0;  featureData < featuresData.length; featureData++) {
       const listFeatureItem = document.createElement('li');  // создаем элемент списка
-      listFeatureItem.classList.add('popup__feature'); // присваиваем элементу списка первый класс
+      listFeatureItem.classList.add('popup__feature');   // присваиваем элементу списка первый класс
       listFeatureItem.classList.add(`popup__feature--${featuresData[featureData].toLowerCase()}`); // присваиваем элементу списка второй класс
       listAccessOptions.appendChild(listFeatureItem); //перемещаем элемент в последний уровень списка
     }
@@ -73,8 +75,6 @@ const generateAddMarkup = function({offer, author}) {
     avatarItem.src = avatarSrc;
   }
 
-  // similarFragment.appendChild(ticket);
-  // mapCanvasElement.appendChild(similarFragment);
   return ticket;
 };
 
