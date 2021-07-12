@@ -35,67 +35,79 @@ const initMap = () => {
   }).addTo(map);
 };
 
-const initAddress = (mainPinMarker) => {
+const setInitAddress = () => {
   addressInput.value = `${Number(TOKYO_CENTER_LAT).toFixed(5)}, ${Number(TOKYO_CENTER_LNG).toFixed(5)}`;
+};
+
+const initAddress = (mainPinMarker) => {
+  setInitAddress();
   mainPinMarker.on('moveend', (evt) => {
     addressInput.value = (`${Number(evt.target.getLatLng().lat).toFixed(5)}, ${Number(evt.target.getLatLng().lng).toFixed(5)}`);
   });
 };
 
+const mainPinIcon = L.icon({
+  iconUrl: MAIN_ICON_LINK,
+  iconSize: [MAIN_ICON_WIDTH, MAIN_ICON_LENGTH],
+  iconAnchor: [MAIN_ICON_ANCHOR/2, MAIN_ICON_ANCHOR],
+});
+
+const mainPinMarker = L.marker(
+  {
+    lat: TOKYO_CENTER_LAT,
+    lng: TOKYO_CENTER_LNG,
+  },
+  {
+    draggable: true,
+    icon: mainPinIcon,
+  },
+);
+
 const addMainPinIcon = () => {
-
-  const mainPinIcon = L.icon({
-    iconUrl: MAIN_ICON_LINK,
-    iconSize: [MAIN_ICON_WIDTH, MAIN_ICON_LENGTH],
-    iconAnchor: [MAIN_ICON_ANCHOR/2, MAIN_ICON_ANCHOR],
-  });
-
-  const mainPinMarker = L.marker(
-    {
-      lat: TOKYO_CENTER_LAT,
-      lng: TOKYO_CENTER_LNG,
-    },
-    {
-      draggable: true,
-      icon: mainPinIcon,
-    },
-  );
   mainPinMarker.addTo(map);
   initAddress(mainPinMarker);
 };
 
+const setInitMainPin = () => {
+  mainPinMarker.setLatLng({
+    lat: TOKYO_CENTER_LAT,
+    lng: TOKYO_CENTER_LNG,
+  });
+};
+
 const markerGroup = L.layerGroup().addTo(map);
 
-const addOtherPinMarker = (offers) => {
-  const createMarker = (point) => {
-    const {lat, lng} = point.location;
-    const otherPinIcon = L.icon({
-      iconUrl: OTHER_ICON_LINK,
-      iconSize: [OTHER_ICON_WIDTH, OTHER_ICON_LENGTH],
-      iconAnchor: [OTHER_ICON_ANCHOR/2, OTHER_ICON_ANCHOR],
-    });
+const createMarker = (point) => {
+  const {lat, lng} = point.location;
+  const otherPinIcon = L.icon({
+    iconUrl: OTHER_ICON_LINK,
+    iconSize: [OTHER_ICON_WIDTH, OTHER_ICON_LENGTH],
+    iconAnchor: [OTHER_ICON_ANCHOR/2, OTHER_ICON_ANCHOR],
+  });
 
-    const otherPinMarker = L.marker(
-      {
-        lat,
-        lng,
-      },
-      {
-        otherPinIcon,
-      },
-    );
+  const otherPinMarker = L.marker(
+    {
+      lat,
+      lng,
+    },
+    {
+      otherPinIcon,
+    },
+  );
 
-    otherPinMarker.addTo(markerGroup).bindPopup(
+  otherPinMarker.addTo(markerGroup)
+    .bindPopup(
       generateAddMarkup(point),
       {
         keepInView: true,
       },
     );
-  };
+};
 
+const addOtherPinMarker = (offers) => {
   offers.forEach((point) => {
     createMarker(point);
   });
 };
 
-export {initMap, addMainPinIcon, addOtherPinMarker};
+export {initMap, addMainPinIcon, addOtherPinMarker, setInitAddress,setInitMainPin};

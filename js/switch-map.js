@@ -11,5 +11,4 @@ const activeMap = () => {
   formMapFiltres.classList.remove('map__filters--disabled');
 };
 
-export {deactiveMap};
-export {activeMap};
+export {deactiveMap, activeMap};
