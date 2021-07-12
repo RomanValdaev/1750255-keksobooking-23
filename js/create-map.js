@@ -1,8 +1,7 @@
-// выполняем задание по созданию и отрисовке карты
 function createMap () {
   const map = L.map('map')
     .on('load', () => {
-      console.log('Карта инициализирована');
+      // console.log('Карта инициализирована');
     })
     .setView(
       {

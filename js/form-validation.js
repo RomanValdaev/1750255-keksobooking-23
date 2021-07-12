@@ -1,5 +1,3 @@
-// Валидация "Заголовок обьявления"
-
 const MIN_TITLE_VALUE = 30;
 const MAX_TITLE_VALUE = 100;
 
@@ -44,7 +42,7 @@ const formValidation = function () {
   const ROOMS = {
     one: '1',
     two: '2',
-    three: '2',
+    three: '3',
     hundred: '100',
   };
   const GUEST = {
@@ -59,9 +57,7 @@ const formValidation = function () {
     const guestOfNumbers = guestsSelect.value;
     let message ='';
 
-    if (roomsOfNumbers === ROOMS.one && guestOfNumbers === GUEST.one) {
-      message = 'Подтверждаем заселение ОДНОГО гостя';
-    } else if (roomsOfNumbers === ROOMS.one && guestOfNumbers !== GUEST.one) {
+    if (roomsOfNumbers === ROOMS.one && guestOfNumbers !== GUEST.one) {
       message = 'Этот номер может разместить одного гостя';
     } else if (roomsOfNumbers === ROOMS.two && guestOfNumbers === GUEST.one && guestOfNumbers === GUEST.two) {
       message = 'Этот номер может разместить одного или двух гостей';
@@ -69,6 +65,8 @@ const formValidation = function () {
       message = 'Этот номер может разместить до 3 гостей';
     } else if (roomsOfNumbers === ROOMS.hundred) {
       message = 'Этот 100-комнатный дворец не для гостей';
+    } else {
+      message = '';
     }
     roomsSelect.setCustomValidity(message);
     roomsSelect.reportValidity();

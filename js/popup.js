@@ -1,16 +1,21 @@
-const successAlert = document.querySelector('.success'); //successAlert
-const errorAlert = document.querySelector('.error'); // errorAlert
-const errorButton = errorAlert.querySelector('.error__button'); // errorButton
+const main = document.querySelector('main');
 
-//====================================================================
+const successAlert = document.querySelector('#success').content.cloneNode(true).querySelector('.success');
+successAlert.classList.add('hidden');
+main.appendChild(successAlert);
+
+const errorAlert = document.querySelector('#error').content.cloneNode(true).querySelector('.error');
+errorAlert.classList.add('hidden');
+main.appendChild(errorAlert);
+
+const errorButton = document.querySelector('.error__button');
+
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 const isEnterEvent = (evt) => evt.key === 'Enter';
 const showAlert = (modal) => {
   const alertContainer = modal.cloneNode(true);
   document.body.append(alertContainer);
 };
-
-//====================================================================
 
 const onSuccessPopupEscKeydown = (evt) => {
   if (isEscEvent(evt) || evt.currentTarget === document) {
