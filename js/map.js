@@ -14,6 +14,8 @@ const OTHER_ICON_LENGTH = 40;
 const OTHER_ICON_ANCHOR = 52;
 const OTHER_ICON_LINK = '../img/pin.svg';
 
+const MAP_SCALE = 12;
+
 const adForm = document.querySelector('.ad-form');
 const addressInput = adForm.querySelector('#address');
 const map = L.map('map-canvas');
@@ -27,7 +29,7 @@ const initMap = () => {
         lat: TOKYO_CENTER_LAT,
         lng: TOKYO_CENTER_LNG,
       },
-      13);
+      MAP_SCALE);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution:
