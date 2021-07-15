@@ -41,9 +41,9 @@ const setInitAddress = () => {
   addressInput.value = `${Number(TOKYO_CENTER_LAT).toFixed(5)}, ${Number(TOKYO_CENTER_LNG).toFixed(5)}`;
 };
 
-const initAddress = (mainPinMarker) => {
+const initAddress = (pin) => {
   setInitAddress();
-  mainPinMarker.on('moveend', (evt) => {
+  pin.on('moveend', (evt) => {
     addressInput.value = (`${Number(evt.target.getLatLng().lat).toFixed(5)}, ${Number(evt.target.getLatLng().lng).toFixed(5)}`);
   });
 };
@@ -107,6 +107,7 @@ const createMarker = (point) => {
 };
 
 const addOtherPinMarker = (offers) => {
+  markerGroup.clearLayers();
   offers.forEach((point) => {
     createMarker(point);
   });

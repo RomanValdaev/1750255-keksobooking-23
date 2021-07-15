@@ -22,6 +22,8 @@ const LATITUDE_VALUE_MIN = 139.70000;
 const LATITUDE_VALUE_MAX = 139.80000;
 const COORDS_ACCURACY = 5;
 
+const OFFERS_VALUE = 10;
+
 // экспортируем все обьявленые переменные
 export {
   USER_NUMBER_MIN,
@@ -41,5 +43,6 @@ export {
   LONGITUDE_VALUE_MAX,
   LATITUDE_VALUE_MIN,
   LATITUDE_VALUE_MAX,
-  COORDS_ACCURACY
+  COORDS_ACCURACY,
+  OFFERS_VALUE
 };
