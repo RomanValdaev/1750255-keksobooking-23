@@ -6,56 +6,53 @@ const houseTypeData = {
   hotel: 'Отель',
 };
 
-const cardTemplateСontent = document.querySelector('#card').content; // получаем полный состав template (#card)
-// const mapCanvasElement = document.querySelector('#map-canvas'); // получаем полный состав template (#map-canvas)
-// const similarFragment = document.createDocumentFragment(); // создаем пустую оболочку для дальнейшей записи данных
+const cardTemplateСontent = document.querySelector('#card').content;
 
-const generateAddMarkup = function({offer, author}) {
-  // начинаем перебор сформированного массива
-  const ticket = cardTemplateСontent.cloneNode(true); // клонируем массив с данными
+const generateAddMarkup = ({offer, author}) => {
+  const ticket = cardTemplateСontent.cloneNode(true);
   if (offer.title.length < 2) {
-    ticket.querySelector('.popup__title').classList.add('hidden'); // проверка на достаточность данных
+    ticket.querySelector('.popup__title').classList.add('hidden');
   } else {
-    ticket.querySelector('.popup__title').textContent = offer.title; // вывод данных в обьект DOM
+    ticket.querySelector('.popup__title').textContent = offer.title;
   }
   if (offer.address.length < 2) {
-    ticket.querySelector('.popup__text--address').classList.add('hidden'); // проверка на достаточность данных
+    ticket.querySelector('.popup__text--address').classList.add('hidden');
   } else {
-    ticket.querySelector('.popup__text--address').textContent = offer.address; // вывод данных в обьект DOM
+    ticket.querySelector('.popup__text--address').textContent = offer.address;
   }
   if (offer.price.length < 2) {
-    ticket.querySelector('.popup__text--price').classList.add('hidden'); // проверка на достаточность данных
+    ticket.querySelector('.popup__text--price').classList.add('hidden');
   } else {
-    ticket.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`; // вывод данных в обьект DOM
+    ticket.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
   }
 
-  ticket.querySelector('.popup__type').textContent = houseTypeData[offer.type]; // запись
-  ticket.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнат(ы) для ${offer.guests} гостей`; // запись
-  ticket.querySelector ('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`; //запись
+  ticket.querySelector('.popup__type').textContent = houseTypeData[offer.type];
+  ticket.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнат(ы) для ${offer.guests} гостей`;
+  ticket.querySelector ('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
 
-  const listAccessOptions = ticket.querySelector('.popup__features'); // находим общий список
-  listAccessOptions.innerHTML = ''; // обнуляем содержимое списка, делаем список пустым
-  const featuresData = offer.features; // создаем переменную и записываем в нее данные из массива
+  const listAccessOptions = ticket.querySelector('.popup__features');
+  listAccessOptions.innerHTML = '';
+  const featuresData = offer.features;
 
-  if (featuresData && featuresData.length === 0 ) {
+  if (featuresData && featuresData.length === 0) {
     ticket.querySelector('.popup__feature').classList('hidden');
   } else if (featuresData) {
     for (let featureData = 0;  featureData < featuresData.length; featureData++) {
-      const listFeatureItem = document.createElement('li');  // создаем элемент списка
-      listFeatureItem.classList.add('popup__feature'); // присваиваем элементу списка первый класс
-      listFeatureItem.classList.add(`popup__feature--${featuresData[featureData].toLowerCase()}`); // присваиваем элементу списка второй класс
-      listAccessOptions.appendChild(listFeatureItem); //перемещаем элемент в последний уровень списка
+      const listFeatureItem = document.createElement('li');
+      listFeatureItem.classList.add('popup__feature');
+      listFeatureItem.classList.add(`popup__feature--${featuresData[featureData].toLowerCase()}`);
+      listAccessOptions.appendChild(listFeatureItem);
     }
   }
   const fotoElement = ticket.querySelector('.popup__photos');
-  fotoElement.innerHTML = ''; // обнуляем содержимое списка, делаем список пустым
+  fotoElement.innerHTML = '';
   const fotoElementData = offer.photos;
 
   if (fotoElementData && fotoElementData.length === 0) {
     fotoElement.classList.add('hidden');
   } else if (fotoElementData) {
     for (let fotoElementItem = 0; fotoElementItem < fotoElementData.length; fotoElementItem++) {
-      const fotoElementImg  = document.createElement('img'); //добавляем новый элемент
+      const fotoElementImg  = document.createElement('img');
       fotoElementImg.classList.add('popup__photo');
       fotoElementImg.src = `${fotoElementData[fotoElementItem]}`;
       fotoElementImg.width = 45;
@@ -64,7 +61,6 @@ const generateAddMarkup = function({offer, author}) {
       fotoElement.appendChild(fotoElementImg);
     }
   }
-
   const avatarItem = ticket.querySelector('.popup__avatar');
   const avatarSrc = author.avatar;
   if (avatarSrc.lenght === 0) {
@@ -72,7 +68,6 @@ const generateAddMarkup = function({offer, author}) {
   } else {
     avatarItem.src = avatarSrc;
   }
-
   return ticket;
 };
 

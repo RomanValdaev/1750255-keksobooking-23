@@ -9,6 +9,7 @@ const getData = (onSuccess, onError) => (
       }
       else {
         throw new Error (`Ошибка ${response.status}, не удалось получить данные с сервера...`);}
+      // по идее надо взять и заблокировать карту и форму
     })
     .then((response) => response.json())
     .then((offers) => onSuccess(offers))

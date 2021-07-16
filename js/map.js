@@ -1,4 +1,4 @@
-import {activeMap} from './switch-map.js';
+import {activeFormNotice} from './switch-map.js';
 import {generateAddMarkup} from './generate-add-markup.js';
 
 const TOKYO_CENTER_LAT = 35.69100;
@@ -22,7 +22,7 @@ const map = L.map('map-canvas');
 
 const initMap = () => {
   map.on('load', () => {
-    activeMap();
+    activeFormNotice();
   })
     .setView(
       {

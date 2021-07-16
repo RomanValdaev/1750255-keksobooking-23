@@ -1,14 +1,42 @@
+
+// работаем с фильтром карты
+const mapFiltres = document.querySelector('.map__filters');
+const mapFiltresSelect = mapFiltres.querySelectorAll('.map__filter');
+const mapFiltresItem = mapFiltres.querySelector('#housing-features');
+
+// работаем с фильтром нового обьявления
 const formNotice = document.querySelector('.ad-form');
-const formMapFiltres = document.querySelector('.map__filters');
+const formNoticeFielsets = formNotice.querySelectorAll('fieldset');
 
 const deactiveMap = () => {
+  mapFiltres.classList.add('map__filters--disabled');
+  mapFiltresSelect.forEach((select) => {
+    select.setAttribute('disabled', 'disabled');
+  });
+  mapFiltresItem.setAttribute('disabled', 'disabled');
+
   formNotice.classList.add('ad-form--disabled');
-  formMapFiltres.classList.add('map__filters--disabled');
+  formNoticeFielsets.forEach((select) => {
+    select.setAttribute('disabled', 'disabled');
+  });
 };
 
-const activeMap = () => {
+const activeMapFilters = () => {
+  mapFiltres.classList.remove('map__filters--disabled');
+  mapFiltresSelect.forEach((select) => {
+    select.removeAttribute('disabled');
+  });
+  mapFiltresItem.removeAttribute('disabled');
+};
+
+const activeFormNotice = () => {
   formNotice.classList.remove('ad-form--disabled');
-  formMapFiltres.classList.remove('map__filters--disabled');
+  formNoticeFielsets.forEach((select) => {
+    select.removeAttribute('disabled');
+  });
+
 };
 
-export {deactiveMap, activeMap};
+export {deactiveMap, activeMapFilters, activeFormNotice};
+
+

@@ -1,32 +1,34 @@
 import './form-booking.js';
 import './form-send.js';
-import {OFFERS_VALUE} from './variables.js';
-import {formValidation} from './form-validation.js';
-import {deactiveMap} from './switch-map.js';
+import {getFormValidation} from './get-form-validation.js';
+import {deactiveMap, activeMapFilters} from './switch-map.js';
 import {initMap, addMainPinIcon, addOtherPinMarker} from './map.js';
 import {getData} from './fetch.js';
-import {errorMessage} from './error-message.js';
-import {finalFilter} from './filter-form-map.js';
+import {getErrorMessage} from './error-message.js';
+import {getFinalFilter} from './filter-form-map.js';
 import {debounce} from './utils/debounce.js';
 
-const TIME__DELAY = 500; // надо ли ее вынести в variables.js ? По идее она используется только в данном блоке.
-const filterFormMap = document.querySelector('.map__filters');
-let offersDataFinal = []; // надо ли ее вынести в variables.js ? По идее она используется только в данном блоке.
+const TIME__DELAY = 500;
+const OFFERS_VALUE = 10;
+let offersDataFinal = [];
 
-formValidation();
+const filterFormMap = document.querySelector('.map__filters');
+
+getFormValidation();
 deactiveMap();
 initMap();
 addMainPinIcon();
 
 const onChangeFilter = () => {
-  const offersFilter = finalFilter(offersDataFinal).slice();
+  const offersFilter = getFinalFilter(offersDataFinal).slice();
   addOtherPinMarker(offersFilter);
 };
 
-const random = (array) => {
+const getSortedOffers = (array) => {
+  activeMapFilters();
   offersDataFinal = array.slice();
   addOtherPinMarker(array.slice(0, OFFERS_VALUE));
   filterFormMap.addEventListener('change', debounce(onChangeFilter, TIME__DELAY));
 };
 
-getData(random, errorMessage);
+getData(getSortedOffers, getErrorMessage);

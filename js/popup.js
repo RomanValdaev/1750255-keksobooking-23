@@ -16,7 +16,6 @@ const showAlert = (modal) => {
   const alertContainer = modal.cloneNode(true);
   document.body.append(alertContainer);
 };
-
 const onSuccessPopupEscKeydown = (evt) => {
   if (isEscEvent(evt) || evt.currentTarget === document) {
     evt.preventDefault();

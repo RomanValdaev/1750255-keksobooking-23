@@ -1,5 +1,4 @@
-import {OFFERS_VALUE} from './variables.js';
-
+const OFFERS_VALUE = 10;
 const ANY = 'any';
 
 const filterFormMap = document.querySelector('.map__filters');
@@ -26,7 +25,7 @@ const priceMatch = (filterValue, dataField) =>
 
 const selectFeatures = (filterValue, dataValue) => filterValue.every((feature) => dataValue.includes(feature));
 
-const finalFilter = (offers) => {
+const getFinalFilter = (offers) => {
   const allCheckFeatures = Array.from(filterFormMap.querySelectorAll('.map__checkbox:checked')).map((element) => element.value);
   const filterData = offers.filter((item) => {
     const typeValue = item.offer.type ? item.offer.type : '';
@@ -44,5 +43,4 @@ const finalFilter = (offers) => {
   return filterData.slice(0, OFFERS_VALUE);
 };
 
-export {finalFilter};
-
+export {getFinalFilter};

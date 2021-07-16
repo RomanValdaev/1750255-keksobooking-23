@@ -1,5 +1,5 @@
 const main = document.querySelector('main');
-const errorMessage = (message) => {
+const getErrorMessage = (message) => {
   const errorMessageBlock = document.createElement('div');
   errorMessageBlock.classList.add('error__mess');
   errorMessageBlock.textContent = message;
@@ -7,4 +7,4 @@ const errorMessage = (message) => {
   main.appendChild(errorMessageBlock);
 };
 
-export {errorMessage};
+export {getErrorMessage};
