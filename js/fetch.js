@@ -3,15 +3,8 @@ const sendDataUrl = 'https://23.javascript.pages.academy/keksobooking';
 
 const getData = (onSuccess, onError) => (
   fetch(getDataUrl)
-    .then((response) => {
-      if (response.ok) {
-        return response;
-      }
-      else {
-        throw new Error (`Ошибка ${response.status}, не удалось получить данные с сервера...`);}
-      // по идее надо взять и заблокировать карту и форму
-    })
-    .then((response) => response.json())
+    .then((response) => (response.ok) ? (response.json()) : () => {throw new Error (`Ошибка ${response.status}, не удалось получить данные с сервера...`);},
+    )
     .then((offers) => onSuccess(offers))
     .catch((error) => onError(error))
 );
@@ -22,13 +15,9 @@ const sendData = (form, onSuccess, onError) => (
       method: 'POST',
       body: new FormData(form),
     },
-  ).then((response) => {
-    if (response.ok) {
-      onSuccess();
-    } else {
-      throw new Error (`Ошибка ${response.status}, не удалось отправить данные ...`);
-    }
-  })
+  )
+    .then((response) => (response.ok) ? onSuccess() : () => {throw new Error (`Ошибка ${response.status}, не удалось отправить данные ...`);},
+    )
     .catch((error) => onError(error))
 );
 

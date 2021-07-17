@@ -6,21 +6,25 @@ const houseTypeData = {
   hotel: 'Отель',
 };
 
-const cardTemplateСontent = document.querySelector('#card').content;
+const MIN_NUMBER_CHAR = 2;
+const FOTO_WIDTH = 45;
+const FOTO_HEIGHT = 40;
+
+const cardTemplateContent = document.querySelector('#card').content;
 
 const generateAddMarkup = ({offer, author}) => {
-  const ticket = cardTemplateСontent.cloneNode(true);
-  if (offer.title.length < 2) {
+  const ticket = cardTemplateContent.cloneNode(true);
+  if (offer.title.length < MIN_NUMBER_CHAR) {
     ticket.querySelector('.popup__title').classList.add('hidden');
   } else {
     ticket.querySelector('.popup__title').textContent = offer.title;
   }
-  if (offer.address.length < 2) {
+  if (offer.address.length < MIN_NUMBER_CHAR) {
     ticket.querySelector('.popup__text--address').classList.add('hidden');
   } else {
     ticket.querySelector('.popup__text--address').textContent = offer.address;
   }
-  if (offer.price.length < 2) {
+  if (offer.price.length < MIN_NUMBER_CHAR) {
     ticket.querySelector('.popup__text--price').classList.add('hidden');
   } else {
     ticket.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
@@ -55,8 +59,8 @@ const generateAddMarkup = ({offer, author}) => {
       const fotoElementImg  = document.createElement('img');
       fotoElementImg.classList.add('popup__photo');
       fotoElementImg.src = `${fotoElementData[fotoElementItem]}`;
-      fotoElementImg.width = 45;
-      fotoElementImg.height = 40;
+      fotoElementImg.width = FOTO_WIDTH;
+      fotoElementImg.height = FOTO_HEIGHT;
       fotoElementImg.alt = 'Фотография апартаментов';
       fotoElement.appendChild(fotoElementImg);
     }

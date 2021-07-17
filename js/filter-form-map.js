@@ -1,12 +1,6 @@
 const OFFERS_VALUE = 10;
 const ANY = 'any';
 
-const filterFormMap = document.querySelector('.map__filters');
-const housingType = filterFormMap.querySelector('#housing-type');
-const housingPrice = filterFormMap.querySelector('#housing-price');
-const housingRooms = filterFormMap.querySelector('#housing-rooms');
-const housingGuests = filterFormMap.querySelector('#housing-guests');
-
 const price = {
   low: 'low',
   middle: 'middle',
@@ -14,6 +8,12 @@ const price = {
   minCost:'10000',
   maxCost:'50000',
 };
+
+const filterFormMap = document.querySelector('.map__filters');
+const housingType = filterFormMap.querySelector('#housing-type');
+const housingPrice = filterFormMap.querySelector('#housing-price');
+const housingRooms = filterFormMap.querySelector('#housing-rooms');
+const housingGuests = filterFormMap.querySelector('#housing-guests');
 
 const filterMatch = (filterValue, dataField) => filterValue === ANY || String(filterValue) === String(dataField);
 

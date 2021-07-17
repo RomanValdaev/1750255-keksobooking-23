@@ -15,6 +15,7 @@ const OTHER_ICON_ANCHOR = 52;
 const OTHER_ICON_LINK = '../img/pin.svg';
 
 const MAP_SCALE = 12;
+const NUMBER_SIGNS = 5;
 
 const adForm = document.querySelector('.ad-form');
 const addressInput = adForm.querySelector('#address');
@@ -38,13 +39,13 @@ const initMap = () => {
 };
 
 const setInitAddress = () => {
-  addressInput.value = `${Number(TOKYO_CENTER_LAT).toFixed(5)}, ${Number(TOKYO_CENTER_LNG).toFixed(5)}`;
+  addressInput.value = `${Number(TOKYO_CENTER_LAT).toFixed(NUMBER_SIGNS)}, ${Number(TOKYO_CENTER_LNG).toFixed(NUMBER_SIGNS)}`;
 };
 
 const initAddress = (pin) => {
   setInitAddress();
   pin.on('moveend', (evt) => {
-    addressInput.value = (`${Number(evt.target.getLatLng().lat).toFixed(5)}, ${Number(evt.target.getLatLng().lng).toFixed(5)}`);
+    addressInput.value = (`${Number(evt.target.getLatLng().lat).toFixed(NUMBER_SIGNS)}, ${Number(evt.target.getLatLng().lng).toFixed(NUMBER_SIGNS)}`);
   });
 };
 

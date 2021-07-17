@@ -3,10 +3,6 @@ const MAX_TITLE_VALUE = 100;
 const MIN_NIGHT_PRICE = 0;
 const MAX_NIGHT_PRICE = 1000000;
 
-const form = document.querySelector('.ad-form');
-const roomsSelect = form.querySelector('#room_number');
-const guestsSelect = form.querySelector('#capacity');
-
 const roomsValue = {
   one: '1',
   two: '2',
@@ -20,6 +16,10 @@ const guestValue = {
   three: '3',
   norooms: '0',
 };
+
+const form = document.querySelector('.ad-form');
+const roomsSelect = form.querySelector('#room_number');
+const guestsSelect = form.querySelector('#capacity');
 
 const getFormValidation = () => {
   const textTitle = document.querySelector('#title');
@@ -51,7 +51,7 @@ const getFormValidation = () => {
     priceValue.reportValidity();
   });
 
-  const roomGuestValidate = () => {
+  const onRoomsChange = () => {
     const roomsOfNumbers = roomsSelect.value;
     const guestOfNumbers = guestsSelect.value;
     let message ='';
@@ -71,8 +71,8 @@ const getFormValidation = () => {
     roomsSelect.reportValidity();
   };
 
-  roomsSelect.addEventListener('change', roomGuestValidate);
-  guestsSelect.addEventListener('change', roomGuestValidate);
+  roomsSelect.addEventListener('change', onRoomsChange);
+  guestsSelect.addEventListener('change', onRoomsChange);
 };
 
 export {getFormValidation};

@@ -12,10 +12,7 @@ const errorButton = document.querySelector('.error__button');
 
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 const isEnterEvent = (evt) => evt.key === 'Enter';
-const showAlert = (modal) => {
-  const alertContainer = modal.cloneNode(true);
-  document.body.append(alertContainer);
-};
+
 const onSuccessPopupEscKeydown = (evt) => {
   if (isEscEvent(evt) || evt.currentTarget === document) {
     evt.preventDefault();
@@ -55,4 +52,5 @@ errorButton.addEventListener('keydown', (evt) => {
     closeErrorModal();
   }
 });
-export {openSuccessModal, openErrorModal, successAlert, errorAlert, isEscEvent, isEnterEvent, showAlert};
+
+export {openSuccessModal, openErrorModal, successAlert, errorAlert, isEscEvent, isEnterEvent};

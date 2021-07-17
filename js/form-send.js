@@ -6,7 +6,7 @@ const formSend = document.querySelector('.ad-form');
 const buttonReset = formSend.querySelector('.ad-form__reset');
 const mapFiltres = document.querySelector('.map__filters');
 
-const setInitStateForm = () => {
+const onInitStateForm = () => {
   mapFiltres.reset();
   mapFiltres.dispatchEvent(new Event('change'));
   formSend.reset();
@@ -14,10 +14,10 @@ const setInitStateForm = () => {
   setInitAddress();
 };
 
-buttonReset.addEventListener('click', setInitStateForm);
+buttonReset.addEventListener('click', onInitStateForm);
 
 const onSuccess = () => {
-  setInitStateForm();
+  onInitStateForm();
   openSuccessModal();
 };
 
