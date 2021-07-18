@@ -1,3 +1,7 @@
+const MIN_NUMBER_CHAR = 2;
+const FOTO_WIDTH = 45;
+const FOTO_HEIGHT = 40;
+
 const houseTypeData = {
   palace: 'Дворец',
   flat: 'Квартира',
@@ -5,10 +9,6 @@ const houseTypeData = {
   bungalow: 'Бунгало',
   hotel: 'Отель',
 };
-
-const MIN_NUMBER_CHAR = 2;
-const FOTO_WIDTH = 45;
-const FOTO_HEIGHT = 40;
 
 const cardTemplateContent = document.querySelector('#card').content;
 
